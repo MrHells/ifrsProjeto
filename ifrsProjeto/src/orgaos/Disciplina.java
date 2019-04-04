@@ -13,11 +13,11 @@ import pessoas.*;
  * @author 05200254
  */
 public class Disciplina {
-    Aluno[] alunos = new Aluno[30];
-    Professor tutor;
-    String Nome;
-    int ano;
-    double notas[];
+    private Aluno[] alunos = new Aluno[30];
+    private Professor tutor;
+    private String Nome;
+    private int ano;
+    private double notas[];
     
     public boolean registraNota(double notaARegistrar, String nomeDoAluno){
         for(int i = 0; i < alunos.length; i++){

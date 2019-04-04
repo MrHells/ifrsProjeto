@@ -5,6 +5,7 @@
  */
 package orgaos;
 
+import pessoas.Aluno;
 import pessoas.Professor;
 
 /**
@@ -12,8 +13,9 @@ import pessoas.Professor;
  * @author 05200254
  */
 public class SetorEnsino {
-    private Curso[] cursos = new Curso[30];
+    private Curso[] cursos;
     private Professor[] professores;
+    private Aluno[] alunos;
     private String diretor;
     private String coordenador;
 
@@ -23,7 +25,12 @@ public class SetorEnsino {
         this.diretor = diretor;
         this.coordenador = coordenador;
     }
-    
+    public SetorEnsino(String diretor, String coordenador) {
+        this.cursos = new Curso[3];
+        this.professores = new Professor[60];
+        this.diretor = diretor;
+        this.coordenador = coordenador;
+    }
     public boolean novoProfessor(Professor novoProfessor){
         for(int i = 0; i < professores.length; i++){
             if(professores[i] == null){
@@ -65,6 +72,14 @@ public class SetorEnsino {
             
         }
         return false;
+    }
+
+    public Aluno[] getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Aluno[] alunos) {
+        this.alunos = alunos;
     }
     
     public Curso[] getCursos() {

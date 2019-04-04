@@ -11,9 +11,9 @@ package pessoas;
  */
 public class Professor {
 
-    public String nome;
-    public String areas[];
-    public long siape;
+    private String nome;
+    private String areas[];
+    private long siape;
     
     public Professor(String nome, long siape, String[] areas){
         this.nome = nome;
