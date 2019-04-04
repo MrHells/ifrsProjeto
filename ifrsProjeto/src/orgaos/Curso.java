@@ -20,21 +20,24 @@ public class Curso {
         this.ppc = ppc;
     }
     
-    public void novaDisciplina(Disciplina disciplina){
+    public boolean novaDisciplina(Disciplina disciplina){
         for(int i = 0; i < disciplinas.length; i++){
             if(disciplinas[i] != null){
                 disciplinas[i] = disciplina;
-                break;
+                return true;
             }
         }
+        return false;
     }
     
-    public void removerDisc(Disciplina disciplinaParaRemover){
+    public boolean removerDisc(Disciplina disciplinaParaRemover){
         for(int i = 0; i < disciplinas.length; i++){
             if(disciplinaParaRemover == disciplinas[i]){
                 disciplinas[i] = null;
+                return true;
             }
         }
+        return false;
     }
 
     public String getNome() {

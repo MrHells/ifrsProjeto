@@ -13,42 +13,50 @@ import pessoas.*;
  * @author 05200254
  */
 public class Disciplina {
-    Aluno[] alunos;
+    Aluno[] alunos = new Aluno[30];
     Professor tutor;
     String Nome;
     int ano;
     double notas[];
     
-    public void registraNota(double notaARegistrar, String nomeDoAluno){
+    public boolean registraNota(double notaARegistrar, String nomeDoAluno){
         for(int i = 0; i < alunos.length; i++){
             if(alunos[i] != null && alunos[i].getNome().equalsIgnoreCase(nomeDoAluno)){
                 notas[i] = notaARegistrar;
+                return true;
             }
         }
+        return false;
     }
     
-    public void novoAluno(Aluno aluno){
+    public boolean novoAluno(Aluno aluno){
         for(int i = 0; i < alunos.length; i++){
             if(alunos[i] == null){
                 alunos[i] = aluno;
+                return true;
             }
         }
+        return false;
     }
     
-    public void removerAluno(Aluno alunoASerRemovido){
+    public boolean removerAluno(Aluno alunoASerRemovido){
         for(int i = 0; i < alunos.length; i++){
             if(alunos[i] == alunoASerRemovido){
                 alunos[i] = null;
+                return true;
             }
         }
+        return false;
     }
     
-    public void alterarNota(double novaNota, Aluno alunoDaNota){
+    public boolean alterarNota(double novaNota, Aluno alunoDaNota){
         for(int i = 0; i < alunos.length; i++){
             if(alunos[i] == alunoDaNota){
                 notas[i] = novaNota;
+                return true;
             }
         }
+        return false;
     }
 
     public Aluno[] getAlunos() {
