@@ -26,8 +26,16 @@ public class SetorEnsino {
         this.coordenador = coordenador;
     }
     public SetorEnsino(String diretor, String coordenador) {
-        this.cursos = new Curso[3];
-        this.professores = new Professor[60];
+        cursos = new Curso[5];
+        professores = new Professor[60];
+        alunos = new Aluno[30];
+        this.diretor = diretor;
+        this.coordenador = coordenador;
+    }
+    public SetorEnsino(String diretor, String coordenador, Aluno[] alunos) {
+        cursos = new Curso[5];
+        professores = new Professor[60];
+        this.alunos = alunos;
         this.diretor = diretor;
         this.coordenador = coordenador;
     }
