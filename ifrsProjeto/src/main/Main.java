@@ -9,10 +9,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+
 import orgaos.Curso;
 import orgaos.Disciplina;
-
 import orgaos.SetorEnsino;
 import pessoas.Aluno;
 import pessoas.Professor;
@@ -39,23 +38,33 @@ public class Main {
         return lerTexto();
 
     }
+    
+    public static boolean opcaoNaoValida(int opcao, int minimo, int maximo){
+        return opcao < minimo || opcao > maximo;
+    }
+    
     public static void main(String[] args) throws IOException {
         Aluno[] alunos = new Aluno[5];
+        
         Professor[] professores = new Professor[5];
+        System.out.println("1");
         for(int i = 0; i < 5; i++){
             alunos[i] = new Aluno(lerTexto(), 222);
         }
+        
         SetorEnsino ensino = new SetorEnsino("Pamela", "Vitao", alunos);
         String nome;
-        Aluno alunoAtual;
+        Professor professorAtual = null;
+        Aluno alunoAtual = null;
         boolean emConta = false;
-        int opcao = 0, tipoDeUsuario = opcao;
+        int opcao = 0;
         
         do{
             if(!emConta){
+                
                 System.out.println("[1]Para aluno, [2]Para Professor, [3]Para Setor de Ensino e [0]Para sair");
                 opcao = (int) lerNumero();
-                if(opcao < 0 || opcao > 3){
+                if(opcaoNaoValida(opcao, 0, 3)){
                     System.err.println("Opção inválida");
                 }else if(opcao != 0){
                     switch (opcao) {
@@ -77,12 +86,12 @@ public class Main {
                             System.out.println("Qual seu nome?");
                             nome = pedeNome();
                             professores = ensino.getProfessores();
-                            for(Aluno aluno : alunos){
-                                if(aluno != null){
-                                    System.out.println(aluno.getNome().equalsIgnoreCase(nome));
-                                    if(aluno.getNome().equalsIgnoreCase(nome)){
+                            for(Professor professor : professores){
+                                if(professor != null){
+                                    System.out.println(professor.getNome().equalsIgnoreCase(nome));
+                                    if(professor.getNome().equalsIgnoreCase(nome)){
                                         
-                                        alunoAtual = aluno;
+                                        professorAtual = professor;
                                         System.out.println("Nome válido");
                                         emConta = true;
                                         break;
@@ -92,13 +101,21 @@ public class Main {
                         default:
                             System.out.println("informe o nome do coordenador ou diretor: ");
                             nome = lerTexto();
-                            nome = lerTexto();
+                            if(nome.equalsIgnoreCase(ensino.getCoordenador()) || nome.equalsIgnoreCase(ensino.getDiretor())){
+                                emConta = true;
+                            }
                             break;
                     }
                 }
             }else{
-                tipoDeUsuario = opcao;
-                System.out.println("[0]Sair do usuário\n[1]verSuaNota\n[2]receberBomDia");
+                if(opcao == 1){
+                   
+                    Funcoes.aluno(alunoAtual, ensino);
+                }else if( opcao == 2){
+                    Funcoes.professor(professorAtual, ensino);
+                }else{
+                    Funcoes.setorDeEnsino(ensino);
+                }
                 opcao = (int) lerNumero();
                 
             }
@@ -106,4 +123,5 @@ public class Main {
         
     
 }
+
 }
