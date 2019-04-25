@@ -22,28 +22,31 @@ public class Funcoes {
     Curso[] cursos = null;
     Disciplina[] disciplinas = null;
 
-    public static void setorDeEnsino(SetorEnsino ensino) throws IOException {    
-        String ppc, nomeDoCursoDoAluno, nomeDoAluno, cursoDoAluno;
-        int anoDeIngrssoDoAluno;
-        long matriculaAluno;
-        
+    public static void setorDeEnsino(SetorEnsino ensino) throws IOException {     
         do{
             
             System.out.println("[1] Matricular aluno\n [2] Cadastrar professor \n   [3] Demitir professor");
             opcao = Integer.parseInt(Main.lerTexto());
             if(opcao == 1){
                 System.out.print("PPC do curso: ");
-                ppc = Main.lerTexto();
+                String ppc = Main.lerTexto();
                 System.out.print("Nome do curso: ");
-                nomeDoCursoDoAluno = Main.lerTexto();
+                String nomeDoCursoDoAluno = Main.lerTexto();
+                
                 System.out.print("Nome do Aluno: ");
-                nomeDoAluno = Main.lerTexto();
+                String nomeDoAluno = Main.lerTexto();
+                
                 System.out.print("Matricula: ");
-                matriculaAluno = Long.parseLong(Main.lerTexto());
+                long matriculaAluno = Long.parseLong(Main.lerTexto());
                
+            }else if(opcao == 2){
+                Professor prof = programasTeste.CriaProfeOuAluno.criaProfessor();                
+                ensino.novoProfessor(prof);
+            }else if(opcao == 3){
+                
             }
             
-        }while(2 == 3);  
+        }while(2 == 3);
     }
     
     
