@@ -11,7 +11,7 @@ import orgaos.Disciplina;
 import orgaos.SetorEnsino;
 import pessoas.Aluno;
 import pessoas.Professor;
-
+import programasTeste.CriaProfeOuAluno;
 
 /**
  *
@@ -27,26 +27,38 @@ public class Funcoes {
             
             System.out.println("[1] Matricular aluno\n [2] Cadastrar professor \n   [3] Demitir professor");
             opcao = Integer.parseInt(Main.lerTexto());
-            if(opcao == 1){
-                System.out.print("PPC do curso: ");
-                String ppc = Main.lerTexto();
-                System.out.print("Nome do curso: ");
-                String nomeDoCursoDoAluno = Main.lerTexto();
-                
-                System.out.print("Nome do Aluno: ");
-                String nomeDoAluno = Main.lerTexto();
-                
-                System.out.print("Matricula: ");
-                long matriculaAluno = Long.parseLong(Main.lerTexto());
-               
-            }else if(opcao == 2){
-                Professor prof = programasTeste.CriaProfeOuAluno.criaProfessor();                
-                ensino.novoProfessor(prof);
-            }else if(opcao == 3){
-                
+            switch (opcao) {
+                case 1:
+                    System.out.print("Nome do curso: ");
+                    String nomeDoCursoDoAluno = Main.lerTexto();
+                    Aluno aluno = programasTeste.CriaProfeOuAluno.criaAluno();
+                    for(Curso curso : ensino.getCursos()){
+                        if(curso.getNome().equals(nomeDoCursoDoAluno)){
+                            aluno.setCurso(curso);
+                            for(Disciplina disciplina : curso.getDisciplinas()){
+                                disciplina.novoAluno(aluno);
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    Professor prof = programasTeste.CriaProfeOuAluno.criaProfessor();
+                    ensino.novoProfessor(prof);
+                    break;
+                case 3:
+                    System.out.println("Nome do professor que deve ser demitido");
+                    String nomeDoProf = Main.lerTexto();
+                    for(Professor professor : ensino.getProfessores()){
+                        if(professor.getNome().equals(nomeDoProf)){
+                            ensino.demitirProf(professor);
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
             
-        }while(2 == 3);
+        }while(opcao != 0);
     }
     
     
@@ -83,7 +95,7 @@ public class Funcoes {
                     if(alunos[i] == alunoAtual){
                         System.out.println("sua nota é: " + disciplinaDoUsuario.getNotas()[i]);
                     }
-            }
+                }
             }
             
             
