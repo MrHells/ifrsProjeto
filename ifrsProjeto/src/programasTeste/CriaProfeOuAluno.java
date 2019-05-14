@@ -14,10 +14,10 @@ import java.util.Scanner;
  *
  * @author coelho
  */
-public class ProgramaTeste3 {
+public class CriaProfeOuAluno {
     public static Scanner s = new Scanner(System.in);
     
-    public static void escolheuProfessor() {
+    public static Professor criaProfessor() {
         Professor professor;
         String nome;
         int quantAreas;
@@ -36,38 +36,23 @@ public class ProgramaTeste3 {
         }
         
         professor = new Professor(nome, siape, areas);
+        return professor;
     }
     
-    public static void escolheuAluno(){
+    public static Aluno criaAluno(){
         String nome, curso;
         int anoIngresso;
         long matricula;
         System.out.print("Nome:");
         nome = s.nextLine();
-        System.out.print("Curso:");
-        curso = s.nextLine();
         System.out.print("Matricula:");
         matricula = s.nextLong();
         System.out.print("Ingresso:");
         anoIngresso = s.nextInt();    
-        Aluno aluno = new Aluno(nome, curso, anoIngresso, false, matricula);
+        Aluno aluno = new Aluno(nome, null, anoIngresso, false, matricula);
         
+        return aluno;
     }
-    
-    public static void main(String[] args) {
-        
-        System.out.println("Escolha [1] para professor e [2] para aluno:");
-        int opcao = s.nextInt();
-        s.nextLine();
-        
-        if (opcao == 1) {
-            escolheuProfessor();
-        } else {
-            escolheuAluno();
-        }
-        
-    }
-    
     
 }
 

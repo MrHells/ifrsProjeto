@@ -24,8 +24,7 @@ public class Funcoes {
 
     public static void setorDeEnsino(SetorEnsino ensino) throws IOException {     
         do{
-            
-            System.out.println("[1] Matricular aluno\n [2] Cadastrar professor \n   [3] Demitir professor");
+            System.out.println("[1] Matricular Aluno\n[2] Cadastrar Professor \n[3] Demitir Professor\n[4] Desmatricular Aluno \n[5] Criar curso \n[6]Criar Disciplina");
             opcao = Integer.parseInt(Main.lerTexto());
             switch (opcao) {
                 case 1:
@@ -49,8 +48,11 @@ public class Funcoes {
                     System.out.println("Nome do professor que deve ser demitido");
                     String nomeDoProf = Main.lerTexto();
                     for(Professor professor : ensino.getProfessores()){
+                        if(professor == null){
+                            continue;
+                        }
                         if(professor.getNome().equals(nomeDoProf)){
-                            ensino.demitirProf(professor);
+                                ensino.demitirProf(professor);
                         }
                     }
                     break;

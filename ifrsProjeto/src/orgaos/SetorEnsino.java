@@ -5,6 +5,7 @@
  */
 package orgaos;
 
+import java.io.Serializable;
 import pessoas.Aluno;
 import pessoas.Professor;
 
@@ -12,7 +13,7 @@ import pessoas.Professor;
  *
  * @author 05200254
  */
-public class SetorEnsino {
+public class SetorEnsino implements Serializable{
     private Curso[] cursos;
     private Professor[] professores;
     private Aluno[] alunos;
@@ -57,8 +58,7 @@ public class SetorEnsino {
                 return true;
             }
         }
-        return false;
-        
+        return false;  
     }
     
     public boolean removerCurso(Curso cursoParaRemover){
@@ -120,8 +120,5 @@ public class SetorEnsino {
 
     public void setCoordenador(String coordenador) {
         this.coordenador = coordenador;
-    }
-    
-    
-    
+    }   
 }

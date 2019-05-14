@@ -5,11 +5,13 @@
  */
 package pessoas;
 
+import java.io.Serializable;
+
 /**
  *
  * @author coelho
  */
-public class Professor {
+public class Professor implements Serializable{
 
     private String nome;
     private String areas[];

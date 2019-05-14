@@ -5,19 +5,21 @@
  */
 package pessoas;
 
+import java.io.Serializable;
+import orgaos.Curso;
+
 /**
  *
  * @author coelho
  */
-public class Aluno {
-
+public class Aluno implements Serializable{
     private String nome;
-    private String curso;
+    private Curso curso;
     private int anoIngresso;
     private boolean ehFormado;
     private long matricula;
 
-    public Aluno(String nome, String curso, int anoIngresso, boolean ehFormado, long matricula) {
+    public Aluno(String nome, Curso curso, int anoIngresso, boolean ehFormado, long matricula) {
         this.nome = nome;
         this.curso = curso;
         this.anoIngresso = anoIngresso;
@@ -29,9 +31,6 @@ public class Aluno {
         this.nome = nome;
         this.matricula = matricula;
     }
-    
-    
-    
     public String verificaStatus() {
         if (ehFormado) {
             return "O aluno ainda não completou os créditos";
@@ -47,11 +46,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getCurso() {
+    public Curso getCurso() {
         return curso;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
